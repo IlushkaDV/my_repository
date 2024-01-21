@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'news_detail.dart';
 import 'news_service.dart';
 import 'news_model.dart';
+import 'news_detail_screen.dart';
 
 class NewsList extends StatefulWidget {
   @override
@@ -14,10 +15,12 @@ class _NewsListState extends State<NewsList> {
   String selectedArticleUrl = '';
 
   void openFullArticle(String url) {
-    setState(() {
-      isFullArticleVisible = true;
-      selectedArticleUrl = url;
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NewsDetailScreen(url: url),
+      ),
+    );
   }
 
   void closeFullArticle() {
